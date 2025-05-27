@@ -58,6 +58,7 @@
   </style>
 </head>
 <body>
+<img src="logo192.png" alt="Ceratizit Logo" style="max-height:60px;margin:10px auto;display:block;">
   <div class="container">
     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Ceratizit_logo.svg/512px-Ceratizit_logo.svg.png" alt="Ceratizit Logo">
     <h2 style="text-align:center;">Ceratizit Ball Nose Calculator</h2>
@@ -139,5 +140,28 @@
     }
   });
 </script>
+
+<button id="installBtn" style="display:none;position:fixed;bottom:20px;right:20px;padding:10px 20px;background:#007bff;color:white;border:none;border-radius:5px;z-index:999;">
+  Install App
+</button>
+
+<script>
+  let deferredPrompt;
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    const installBtn = document.getElementById("installBtn");
+    if (installBtn) {
+      installBtn.style.display = "inline-block";
+      installBtn.addEventListener("click", () => {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then(() => {
+          installBtn.style.display = "none";
+        });
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
