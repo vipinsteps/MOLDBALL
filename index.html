@@ -4,15 +4,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MOLD_BALL Calculator</title>
+  <title>MOLD_BALL_APP</title>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" type="image/png" href="logo192.png" />
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
-    }
-  </script>
   <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #b30000;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+    }
+    select {
+      width: 100%;
+      padding: 10px;
+      background-color: #f8f8f8;
+      color: #b30000;
+      border: 2px solid #ccc;
+      border-radius: 6px;
+      margin-top: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      width: 100%;
+      background-color: #b30000;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #990000;
+    }
     #installBtn {
       display: none;
       position: fixed;
@@ -26,13 +68,44 @@
       z-index: 999;
     }
   </style>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
 </head>
 <body>
-  <img src="logo192.png" alt="MOLD_BALL Logo" style="max-height:60px; display:block; margin: 20px auto;">
-  <h1 style="text-align:center;">MOLD_BALL PWA</h1>
+  <div class="container">
+    <h1>MOLD_BALL_APP</h1>
 
-  <!-- Sample body for demo -->
-  <p style="text-align:center;">Select options to calculate cutter settings...</p>
+    <label>Material</label>
+    <select>
+      <option>PREHARDEN</option>
+      <option>SKD 11</option>
+      <option>SKD 61</option>
+      <option>SUS QUENCHING</option>
+      <option>COPPER</option>
+      <option>ALUMINIUM</option>
+    </select>
+
+    <label>Operation</label>
+    <select>
+      <option>ROUGHING</option>
+      <option>FINISHING</option>
+    </select>
+
+    <label>Cutter Diameter</label>
+    <select>
+      <option>2</option><option>4</option><option>6</option><option>8</option><option>10</option><option>12</option>
+    </select>
+
+    <label>L/D Ratio</label>
+    <select>
+      <option>3</option><option>4</option><option>5</option>
+    </select>
+
+    <button>Calculate</button>
+  </div>
 
   <button id="installBtn">Install App</button>
 
